@@ -17,9 +17,11 @@ public class ChangeEnvironmentScript : MonoBehaviour
     public GameObject go_platformList;
 	// Use this for initialization
     IEnumerator Start( )
-    {  
+    {
+        _previousEnviroment = CurrentEnvironment.Yellow;
         _currentEnvironment = CurrentEnvironment.Blue;
         MoveDown();
+        ChangeEnvironment();
         
         while ( true )
         {
@@ -56,8 +58,6 @@ public class ChangeEnvironmentScript : MonoBehaviour
     }  
     private void ChangeEnvironment()
     {
-        
-        
         foreach(Transform t in go_platformList.transform){
             //checks the current enviroment. If the colour matches the current colour it updates every platform with the same color
             if (_currentEnvironment == CurrentEnvironment.Blue && t.name.StartsWith("Blue"))
@@ -99,15 +99,7 @@ public class ChangeEnvironmentScript : MonoBehaviour
     {
         foreach (Transform t in go_platformList.transform)
         {
-            t.GetChild(0).GetComponent<PlatformHandler>().FoldIn();
-        }
-    }
-
-    private void MoveNow(GameObject go, int to)
-    {
-        foreach (Transform child in go.transform)
-        {
-            child.position = new Vector3(child.position.x, child.position.y, to);
+             t.GetChild(0).GetComponent<PlatformHandler>().FoldIn();
         }
     }
 
