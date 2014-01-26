@@ -17,17 +17,20 @@ public class PlatformManager : MonoBehaviour {
 
         //create the positionList for Jur
         positionList = new Vector3[gameObject.transform.childCount];
-        for (int i = 0; i < positionList.Length; i++)
-        {
-            positionList[i] = gameObject.transform.GetChild(i).position;
-        }
-
+        FillPositionList();
         //ChangeColour(transform.GetChild(2).gameObject, panelColours[2]);
         //this renames the platforms to my conventions used in the code.
         RenamePlatforms();
         while (true)
         {
             yield return null;
+        }
+	}
+	
+	public void FillPositionList(){
+		for (int i = 0; i < positionList.Length; i++)
+        {
+            positionList[i] = gameObject.transform.GetChild(i).position;
         }
 	}
 

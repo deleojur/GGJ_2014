@@ -1,23 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlatformHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Sequence.cs">
     <Files>
-      <File FileName="Assets\Scripts\Sequence.cs" Line="169" Column="64" />
-      <File FileName="Assets\Scripts\LavaScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameStats.cs" Line="4" Column="14" />
-      <File FileName="Assets\Scripts\SetText.cs" Line="11" Column="51" />
-      <File FileName="Assets\Scripts\PlatformManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerCollision.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayAnimationScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ChangeEnvironmentScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlatformHandler.cs" Line="9" Column="70" />
+      <File FileName="Assets\Scripts\Sequence.cs" Line="201" Column="29" />
+      <File FileName="Assets\Scripts\LavaScript.cs" Line="74" Column="53" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
-              <Node name="PlatformHandler.cs" selected="True" />
+              <Node name="Sequence.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -30,5 +23,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="Assets\Scripts\Sequence.cs" line="161" offsetX="106" offsetY="2400" expression="_sequence" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>

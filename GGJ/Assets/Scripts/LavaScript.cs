@@ -71,7 +71,7 @@ public class LavaScript : MonoBehaviour
 		}
 	}
 	
-	public static void IncreaseLava( float amount = 0.3f )
+	public static void IncreaseLava( float amount = 0.2f )
 	{
 		_increaseLavaAmount	= amount;
 	}

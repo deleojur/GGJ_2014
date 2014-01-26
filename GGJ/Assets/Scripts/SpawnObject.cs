@@ -12,6 +12,7 @@ public class SpawnObject : MonoBehaviour
 	 // Use this for initialization
 	void Start( ) 
 	{
+		
 		StartCoroutine( StartSpawning( ) );
 	}
 	
@@ -20,6 +21,7 @@ public class SpawnObject : MonoBehaviour
 	
 	IEnumerator StartSpawning( )
 	{
+		yield return new WaitForSeconds( 5 );
 		while ( true )
 		{
 	   		Instantiate( spawnObject, transform.position, spawnObject.transform.rotation );

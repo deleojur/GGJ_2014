@@ -46,17 +46,20 @@ public class Sequence : MonoBehaviour
 		_usableGrid					= new List<Node>( );
 		_sequence					= new List<SequenceComponentScript>( );
 		
-		GenerateGrid( );		
+		GenerateGrid( );
 	}
 	
-	void Start( )
+	IEnumerator Start( )
 	{
+		yield return new WaitForSeconds( 0 );
+		
+		Debug.Log( platformManager.positionList.Length );
 		UpdatePlatformPositions( platformManager.positionList );
+		
 				
 		StartCoroutine( FlashSequenceComponent( ) );
 		StartCoroutine( CountDownSequenceTime( ) );
 		
-		//yield return new WaitForSeconds( 20 );
 		UpdateSequence( 3, 20 );
 	}
 	
@@ -107,7 +110,8 @@ public class Sequence : MonoBehaviour
 			{
 				for ( int y = 0; y < maxDistYFromPlatform; ++y )
 				{
-					_grid[xIndex + x, yIndex + y + 2].state = NodeState.Free;
+					
+					//_grid[xIndex + x, yIndex + y + 2].state = NodeState.Free;
 					_usableGrid.Add( _grid[xIndex + x, yIndex + y + 2] );
 				}
 			}
@@ -117,6 +121,7 @@ public class Sequence : MonoBehaviour
 	public void UpdateSequence( int sequenceAmount, float time )
 	{
 		_isSequenceActive	= true;
+		_sequence.Clear( );
 		for ( int i = 0; i < sequenceAmount; ++i )
 		{
 			int index					= ( int )( Random.value * _usableGrid.Count );
@@ -141,11 +146,11 @@ public class Sequence : MonoBehaviour
 			if ( _sequenceID == _sequence.Count )
 			{				
 				sequenceIdentifier.enabled	= false;
-				OnPlayerCompletesSequence( );
+				StartCoroutine( OnPlayerCompletesSequence( ) );
 			} else IdentifyNextSequenceComponent( );
 		} else 
 		{
-			OnPlayerFailsSequence( );
+			StartCoroutine( OnPlayerFailsSequence( ) );
 		}
 	}
 	
@@ -153,19 +158,6 @@ public class Sequence : MonoBehaviour
 	{
 		sequenceIdentifier.enabled				= true;
 		sequenceIdentifier.transform.position	= _sequence[_sequenceID].transform.position;
-	}
-	
-	private void OnPlayerCompletesSequence( )
-	{
-		GameStats.IncreaseScore( 1 );
-		LavaScript.DecreaseLava( 2 );
-		//TODO
-		
-		// the sequence should get harder
-		// every n number of completed sequences, the level should change, and one bad thing and one good thing should happen
-		// score should increase.	
-		
-		LavaScript.DecreaseLava( );
 	}
 	
 	public IEnumerator FlashSequenceComponent( )
@@ -180,7 +172,7 @@ public class Sequence : MonoBehaviour
 				
 				if ( _sequenceTime <= 0 )
 				{
-					OnPlayerFailsSequence( );
+					StartCoroutine( OnPlayerFailsSequence( ) );
 				}
 				yield return new WaitForSeconds( _sequenceTime / 12 );
 			} else yield return null;
@@ -200,7 +192,26 @@ public class Sequence : MonoBehaviour
 		}
 	}
 	
-	private void OnPlayerFailsSequence( )
+	private IEnumerator OnPlayerCompletesSequence( )
+	{
+		int amount = _sequence.Count + 1;
+		_sequence.Clear( );
+		_sequenceID	= 0;
+		GameStats.IncreaseScore( amount - 1 );
+		LavaScript.DecreaseLava( 5 );
+		//TODO
+		
+		// the sequence should get harder
+		// every n number of completed sequences, the level should change, and one bad thing and one good thing should happen
+		// score should increase.	
+		
+		LavaScript.DecreaseLava( );
+		
+		yield return new WaitForSeconds( 5 );
+		UpdateSequence( amount, _originalSequenceTime );
+	}
+	
+	private IEnumerator OnPlayerFailsSequence( )
 	{
 		_isSequenceActive				= false;
 		sequenceIdentifier.enabled		= false;
@@ -209,13 +220,17 @@ public class Sequence : MonoBehaviour
 			if ( obj != null )
 			Destroy( obj.gameObject );
 		}
-				
-		LavaScript.IncreaseLava( 2 );
+		int amount = _sequence.Count;
+		_sequence.Clear( );	
+		_sequenceID	= 0;
+		LavaScript.IncreaseLava( 2 );		
 		//TODO
 		// temp changes:
 		// either the enemy gets a burst spawns or the lava increases
 		// every n number of failed sequences, the sequence gets easier
 		// the score should decrease (muhaha).
-		LavaScript.IncreaseLava( );
+		
+		yield return new WaitForSeconds( 5 );
+		UpdateSequence( amount, _originalSequenceTime );
 	}
 }
