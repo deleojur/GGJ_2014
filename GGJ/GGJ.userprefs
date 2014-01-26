@@ -2,8 +2,20 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Sequence.cs">
     <Files>
+<<<<<<< Updated upstream
       <File FileName="Assets\Scripts\Sequence.cs" Line="201" Column="29" />
       <File FileName="Assets\Scripts\LavaScript.cs" Line="74" Column="53" />
+=======
+      <File FileName="Assets\Scripts\Sequence.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LavaScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameStats.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SetText.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlatformManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerCollision.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayAnimationScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ChangeEnvironmentScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlatformHandler.cs" Line="9" Column="70" />
+>>>>>>> Stashed changes
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
