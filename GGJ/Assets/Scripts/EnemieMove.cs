@@ -17,7 +17,7 @@ public class EnemieMove : MonoBehaviour
 		void Start ()
 		{
 				Physics.IgnoreLayerCollision (8, 8);
-				facingLeft = SpawnObject.direction == 0 ? true : false;
+				//facingLeft = SpawnObject.direction == 0 ? true : false;
 				//StartCoroutine (UpdateDirectionTowardsPlayer ());
 		}
 
@@ -42,16 +42,16 @@ public class EnemieMove : MonoBehaviour
 		public void SwitchDirection ()
 		{
 				facingLeft = ! facingLeft;
-				StartCoroutine ("TurnEnemyAround");
+				StartCoroutine("TurnEnemyAround");
 		}
 
 		IEnumerator TurnEnemyAround ()
 		{
 				int t = 0;
 				while (true) {
-						t += 10;
-						transform.Rotate (new Vector3 (0, 10, 0));
-						if (t > 170) {
+						t += 5;
+						transform.Rotate (new Vector3 (0, 5, 0));
+						if (t > 175) {
 								int v = facingLeft ? 0 : 180;
 								transform.rotation.eulerAngles.Set (0, v, 0);
 								StopCoroutine ("TurnEnemyAround");

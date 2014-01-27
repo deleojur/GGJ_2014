@@ -12,7 +12,6 @@ public class SpawnObject : MonoBehaviour
 	 // Use this for initialization
 	void Start( ) 
 	{
-		
 		StartCoroutine( StartSpawning( ) );
 	}
 	
@@ -21,11 +20,12 @@ public class SpawnObject : MonoBehaviour
 	
 	IEnumerator StartSpawning( )
 	{
-		yield return new WaitForSeconds( 5 );
+		yield return new WaitForSeconds( 12 );
 		while ( true )
 		{
-	   		Instantiate( spawnObject, transform.position, spawnObject.transform.rotation );
+	   		GameObject go = Instantiate( spawnObject, transform.position, spawnObject.transform.rotation ) as GameObject;
 			direction		= ( int )Random.Range( 0, 2 );
+			if(direction == 1) go.GetComponent<EnemieMove>().SwitchDirection();
 	   		if( spawnAtRandomSpeed ) 
 				spawnDelay = Random.Range( randomRangeMin, randomRangeMax );
 	   		yield return new WaitForSeconds( spawnDelay );

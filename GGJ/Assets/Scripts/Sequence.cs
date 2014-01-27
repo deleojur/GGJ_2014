@@ -51,7 +51,7 @@ public class Sequence : MonoBehaviour
 	
 	IEnumerator Start( )
 	{
-		yield return new WaitForSeconds( 0 );
+		yield return new WaitForSeconds( 8 );
 		
 		Debug.Log( platformManager.positionList.Length );
 		UpdatePlatformPositions( platformManager.positionList );
@@ -110,7 +110,7 @@ public class Sequence : MonoBehaviour
 			{
 				for ( int y = 0; y < maxDistYFromPlatform; ++y )
 				{
-					
+					if ( lavaScript.height < _grid[xIndex, yIndex + y + 2].position.y )
 					//_grid[xIndex + x, yIndex + y + 2].state = NodeState.Free;
 					_usableGrid.Add( _grid[xIndex + x, yIndex + y + 2] );
 				}
@@ -126,7 +126,7 @@ public class Sequence : MonoBehaviour
 		{
 			int index					= ( int )( Random.value * _usableGrid.Count );
 			Node n						= _usableGrid[index];
-			GameObject sc				= GameObject.Instantiate( sequenceComponent, n.position, Quaternion.identity ) as GameObject;
+			GameObject sc				= GameObject.Instantiate( sequenceComponent, n.position, sequenceComponent.transform.rotation ) as GameObject;
 			SequenceComponentScript scs = sc.GetComponent<SequenceComponentScript>( );
 			scs.sequenceManager			= this;
 			scs.sequenceID				= i;

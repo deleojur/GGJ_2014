@@ -10,6 +10,7 @@ public class LavaScript : MonoBehaviour
 	
 	public static Transform[]	lastPlatforms	{ get; private set; }
 	public static float			lastplatHeight	{ get; private set; }
+	public float height	{ get { return transform.position.y; } }
 	
 
 	/*void Awake( ){
@@ -28,7 +29,8 @@ public class LavaScript : MonoBehaviour
 	{
 		if ( other.tag	== "Player" )
 		{	
-			//Application.LoadLevel( 0 );
+			GameStats.setScore( 0 );
+			Application.LoadLevel( "Level1" );
 		} if ( other.tag == "Enemy" )
 		{
 			GameObject.Destroy( other.gameObject );
@@ -55,6 +57,10 @@ public class LavaScript : MonoBehaviour
 		if ( _increaseLavaAmount != 0 )
 		{
 			transform.position		+= Vector3.up * _increaseLavaAmount;
+			if ( transform.position.y < -10 )
+			{
+				transform.position = new Vector3( transform.position.x, -10, transform.position.z );
+			}
 			_increaseLavaAmount		= 0;
 			/*if ( transform.position.y > lastplatHeight )
 			{
@@ -71,7 +77,7 @@ public class LavaScript : MonoBehaviour
 		}
 	}
 	
-	public static void IncreaseLava( float amount = 0.2f )
+	public static void IncreaseLava( float amount = 0.1f )
 	{
 		_increaseLavaAmount	= amount;
 	}

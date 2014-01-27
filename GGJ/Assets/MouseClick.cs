@@ -6,6 +6,11 @@ public class MouseClick : MonoBehaviour {
 	public Color color;
 	public Color pressed;
 	public Color hover;
+	
+	void Start()
+	{
+		transform.GetComponent<MeshRenderer> ().material.color = color;
+	}
 
 	void OnMouseEnter()
 	{
@@ -20,7 +25,7 @@ public class MouseClick : MonoBehaviour {
 	void OnMouseDown()
 	{
 		//Assign scenes in build settings
-		Application.LoadLevel("Scene1");
+		transform.GetComponent<MeshRenderer> ().material.color = pressed;
 	}
 	
 	void OnMouseUp()

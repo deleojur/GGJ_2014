@@ -6,9 +6,10 @@ public class PlayerCollision : MonoBehaviour
 	void OnTriggerEnter( Collider other )
 	{
 		//Debug.Log( other.gameObject.tag );
-		if ( other.tag	== "Enemy" )
+		if ( other.tag	== "Enemy" )// || other.gameObject.tag == "Lava" )
 		{
-			//Application.LoadLevel( 0 );
+			GameStats.setScore( 0 );
+			Application.LoadLevel( "Level1" );
 		}
 	}
 }
