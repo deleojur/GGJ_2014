@@ -1,27 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerCollision.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.js">
     <Files>
-      <File FileName="Assets\Scripts\Sequence.cs" Line="113" Column="1" />
-      <File FileName="Assets\Scripts\LavaScript.cs" Line="32" Column="4" />
-      <File FileName="Assets\MouseClick.cs" Line="12" Column="66" />
-      <File FileName="Assets\Scripts\PlayerCollision.cs" Line="11" Column="28" />
-      <File FileName="Assets\Scripts\SpawnObject.cs" Line="23" Column="38" />
+      <File FileName="Assets\Scripts\soundManager.cs" Line="28" Column="19" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.js" Line="44" Column="2" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Scripts" expanded="True">
-              <Node name="PlayerCollision.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

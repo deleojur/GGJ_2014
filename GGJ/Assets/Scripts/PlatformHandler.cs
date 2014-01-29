@@ -7,7 +7,7 @@ public class PlatformHandler : MonoBehaviour {
 	public void FoldIn () {
 		transform.GetComponent<Animator>().Play("FOLDIN");
         transform.parent.GetComponent<BoxCollider>().enabled = false;
-        transform.position = new Vector3(transform.position.x, transform.position.y, 5);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
 	}
 
